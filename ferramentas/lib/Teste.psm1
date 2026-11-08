@@ -56,7 +56,15 @@ function Invoke-Alvo {
     $psi = [System.Diagnostics.ProcessStartInfo]::new()
     $psi.FileName = $pwshExe
     foreach ($a in @('-NoProfile', '-NonInteractive', '-File', $global:ALVO)) { $psi.ArgumentList.Add([string]$a) }
-    foreach ($a in $args) { $psi.ArgumentList.Add([string]$a) }
+    # Achatamos arrays: um argumento-array (ex.: 3,9,2,7) vira vários argumentos
+    # separados, para o parâmetro [int[]] do script-alvo recebê-los corretamente.
+    foreach ($a in $args) {
+        if ($a -is [System.Array]) {
+            foreach ($e in $a) { $psi.ArgumentList.Add([string]$e) }
+        } else {
+            $psi.ArgumentList.Add([string]$a)
+        }
+    }
     $psi.RedirectStandardOutput = $true
     $psi.RedirectStandardError  = $true
     $psi.UseShellExecute = $false
