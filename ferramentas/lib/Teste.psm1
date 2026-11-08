@@ -46,8 +46,9 @@ $global:STATUS = 0
 #   Roda $ALVO num processo pwsh ISOLADO, capturando stdout, stderr e exit code.
 # ----------------------------------------------------------------------------
 function Invoke-Alvo {
-    param([Parameter(ValueFromRemainingArguments = $true)] $Args)
-
+    # NÃO declaramos um param(): usamos a variável automática $args, que recebe
+    # TODOS os tokens passados como texto literal. Assim, algo como '-A' nunca é
+    # confundido com o nome de um parâmetro desta função (ex.: abreviação de -Args).
     $pwshExe = (Get-Process -Id $PID).Path   # o mesmo pwsh que está rodando
 
     # Usamos ProcessStartInfo.ArgumentList: ele CITA cada argumento corretamente,
@@ -55,7 +56,7 @@ function Invoke-Alvo {
     $psi = [System.Diagnostics.ProcessStartInfo]::new()
     $psi.FileName = $pwshExe
     foreach ($a in @('-NoProfile', '-NonInteractive', '-File', $global:ALVO)) { $psi.ArgumentList.Add([string]$a) }
-    if ($Args) { foreach ($a in $Args) { $psi.ArgumentList.Add([string]$a) } }
+    foreach ($a in $args) { $psi.ArgumentList.Add([string]$a) }
     $psi.RedirectStandardOutput = $true
     $psi.RedirectStandardError  = $true
     $psi.UseShellExecute = $false
