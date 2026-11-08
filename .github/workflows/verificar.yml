@@ -1,0 +1,30 @@
+name: Verificação do curso
+
+# Garante a promessa do repositório: todo exemplo e toda solução funcionam.
+on:
+  push:
+    branches: [ main, master, estrutura-curso-completo ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest   # o runner já vem com o PowerShell 7 (pwsh)
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Mostrar versão do PowerShell
+        shell: pwsh
+        run: $PSVersionTable.PSVersion.ToString()
+
+      - name: Instalar PSScriptAnalyzer e Pester
+        shell: pwsh
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
+          Install-Module Pester -Scope CurrentUser -Force -SkipPublisherCheck
+
+      - name: Rodar a verificação completa
+        shell: pwsh
+        run: ./ferramentas/verificar-tudo.ps1
