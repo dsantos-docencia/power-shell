@@ -52,7 +52,7 @@ Each module has **theory** (`README.md`), **runnable commented examples** (`exem
 | 10 | [Testing, Security & DevOps](modulos/10-testes-seguranca-devops/README.en.md) | PSScriptAnalyzer, Pester, code signing, CLM, JEA, Git | 8–10 |
 | 11 | [Modules & Distribution](modulos/11-modulos-e-distribuicao/README.en.md) | `.psm1`/`.psd1`, PowerShell Gallery, PSResourceGet | 6–8 |
 
-🚀 **Hands-on projects**: [projetos/](projetos/README.en.md). 📚 **Quick reference**: [referencia/](referencia/) — including a **Bash → PowerShell translation guide**.
+🚀 **Hands-on projects**: [projetos/](projetos/README.en.md). 📚 **Quick reference**: [referencia/](referencia/README.en.md) — including a **Bash → PowerShell translation guide**.
 
 ---
 
