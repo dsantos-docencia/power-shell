@@ -29,7 +29,7 @@ It's free and open (for noncommercial use). If it helps you, leave a ⭐ and, if
 
 > *"In Bash you think in text. In PowerShell, you think in objects. Once that clicks, you never look at automation the same way again."* — Prof. Daniel
 
-> **Note on this translation:** the course is being translated from Brazilian Portuguese. The landing page is in English; module content is being translated with community help — [come help translate!](traducoes/README.md)
+> **Note on this translation:** the course was written in Brazilian Portuguese and translated to English. All the READMEs (modules, exercises, projects) are in English; what's still open is translating the **comments inside the scripts** — and **corrections or improvements** to any translation are very welcome. [Come help!](traducoes/README.en.md)
 
 ---
 
@@ -39,20 +39,20 @@ Each module has **theory** (`README.md`), **runnable commented examples** (`exem
 
 | # | Module | What you master | Hours |
 |---|---|---|---|
-| 00 | [Intro & the New Paradigm](modulos/00-introducao-paradigma/) | Object vs. text, history (Monad), 5.1 vs. 7+, install, ExecutionPolicy | 4–6 |
-| 01 | [Navigation & Cmdlets](modulos/01-navegacao-cmdlets/) | Verb-Noun, `Get-Help`, `Get-Command`, providers (PSDrives), aliases | 5–7 |
-| 02 | [The Object Pipeline](modulos/02-pipeline-objetos/) | `Get-Member`, `Where/Select/Sort/Group`, formatting, export | 8–10 |
-| 03 | [Scripting & Variables](modulos/03-scripting-variaveis/) | `$PROFILE`, types, operators, output streams (the "Write-Host rule") | 6–8 |
-| 04 | [Control Flow](modulos/04-controle-de-fluxo/) | `if`, supercharged `switch`, loops, `foreach` vs. `ForEach-Object` | 8–10 |
-| 05 | [Functions & Toolmaking](modulos/05-funcoes-toolmaking/) | `[CmdletBinding()]`, advanced parameters, `begin/process/end`, `-WhatIf` | 8–10 |
-| 06 | [Data & Objects](modulos/06-dados-e-objetos/) | Arrays, hashtables, `[PSCustomObject]`, strings, JSON/CSV/XML | 8–10 |
-| 07 | [Errors & Debugging](modulos/07-erros-e-debugging/) | Terminating vs. non-terminating, `try/catch`, `$ErrorActionPreference`, breakpoints | 6–8 |
-| 08 | [Objects & .NET](modulos/08-dotnet-e-objetos/) | `[PSCustomObject]`, `class`/`enum`, calling .NET directly, `Add-Type` | 6–8 |
-| 09 | [Remoting & Parallelism](modulos/09-remoting-e-paralelismo/) | Remoting (WinRM/SSH), jobs, `ForEach-Object -Parallel`, runspaces, scheduling | 8–12 |
-| 10 | [Testing, Security & DevOps](modulos/10-testes-seguranca-devops/) | PSScriptAnalyzer, Pester, code signing, CLM, JEA, Git | 8–10 |
-| 11 | [Modules & Distribution](modulos/11-modulos-e-distribuicao/) | `.psm1`/`.psd1`, PowerShell Gallery, PSResourceGet | 6–8 |
+| 00 | [Intro & the New Paradigm](modulos/00-introducao-paradigma/README.en.md) | Object vs. text, history (Monad), 5.1 vs. 7+, install, ExecutionPolicy | 4–6 |
+| 01 | [Navigation & Cmdlets](modulos/01-navegacao-cmdlets/README.en.md) | Verb-Noun, `Get-Help`, `Get-Command`, providers (PSDrives), aliases | 5–7 |
+| 02 | [The Object Pipeline](modulos/02-pipeline-objetos/README.en.md) | `Get-Member`, `Where/Select/Sort/Group`, formatting, export | 8–10 |
+| 03 | [Scripting & Variables](modulos/03-scripting-variaveis/README.en.md) | `$PROFILE`, types, operators, output streams (the "Write-Host rule") | 6–8 |
+| 04 | [Control Flow](modulos/04-controle-de-fluxo/README.en.md) | `if`, supercharged `switch`, loops, `foreach` vs. `ForEach-Object` | 8–10 |
+| 05 | [Functions & Toolmaking](modulos/05-funcoes-toolmaking/README.en.md) | `[CmdletBinding()]`, advanced parameters, `begin/process/end`, `-WhatIf` | 8–10 |
+| 06 | [Data & Objects](modulos/06-dados-e-objetos/README.en.md) | Arrays, hashtables, `[PSCustomObject]`, strings, JSON/CSV/XML | 8–10 |
+| 07 | [Errors & Debugging](modulos/07-erros-e-debugging/README.en.md) | Terminating vs. non-terminating, `try/catch`, `$ErrorActionPreference`, breakpoints | 6–8 |
+| 08 | [Objects & .NET](modulos/08-dotnet-e-objetos/README.en.md) | `[PSCustomObject]`, `class`/`enum`, calling .NET directly, `Add-Type` | 6–8 |
+| 09 | [Remoting & Parallelism](modulos/09-remoting-e-paralelismo/README.en.md) | Remoting (WinRM/SSH), jobs, `ForEach-Object -Parallel`, runspaces, scheduling | 8–12 |
+| 10 | [Testing, Security & DevOps](modulos/10-testes-seguranca-devops/README.en.md) | PSScriptAnalyzer, Pester, code signing, CLM, JEA, Git | 8–10 |
+| 11 | [Modules & Distribution](modulos/11-modulos-e-distribuicao/README.en.md) | `.psm1`/`.psd1`, PowerShell Gallery, PSResourceGet | 6–8 |
 
-🚀 **Hands-on projects**: [projetos/](projetos/). 📚 **Quick reference**: [referencia/](referencia/) — including a **Bash → PowerShell translation guide**.
+🚀 **Hands-on projects**: [projetos/](projetos/README.en.md). 📚 **Quick reference**: [referencia/](referencia/) — including a **Bash → PowerShell translation guide**.
 
 ---
 
@@ -69,7 +69,7 @@ pwsh ./modulos/00-introducao-paradigma/exemplos/01-objeto-vs-texto.ps1
 
 ## 🤝 Contributing & License
 
-**Join me and leave something useful for the next person.** 🌱 See the [contribution guide](CONTRIBUTING.en.md), submit a script via the **"📜 Submit a script"** issue, or [help translate](traducoes/README.md).
+**Join me and leave something useful for the next person.** 🌱 See the [contribution guide](CONTRIBUTING.en.md), submit a script via the **"📜 Submit a script"** issue, or [help translate](traducoes/README.en.md).
 
 Created and maintained by **Prof. Daniel Santos**. Open for **noncommercial use**: code under [PolyForm Noncommercial 1.0.0](LICENSE), content under [CC BY-NC-SA 4.0](LICENSE-CONTEUDO.md). Commercial use requires the author's permission — see the [NOTICE](NOTICE.md).
 
