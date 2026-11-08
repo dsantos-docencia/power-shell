@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest   # o runner já vem com o PowerShell 7 (pwsh)
     steps:
       - name: Baixar o código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Mostrar versão do PowerShell
         shell: pwsh
