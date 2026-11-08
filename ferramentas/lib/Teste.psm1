@@ -49,27 +49,28 @@ function Invoke-Alvo {
     param([Parameter(ValueFromRemainingArguments = $true)] $Args)
 
     $pwshExe = (Get-Process -Id $PID).Path   # o mesmo pwsh que está rodando
-    $argList = @('-NoProfile', '-NonInteractive', '-File', $global:ALVO)
-    if ($Args) { $argList += $Args }
 
-    $tmpOut = New-TemporaryFile
-    $tmpErr = New-TemporaryFile
-    try {
-        $p = Start-Process -FilePath $pwshExe -ArgumentList $argList `
-                -NoNewWindow -PassThru -RedirectStandardOutput $tmpOut `
-                -RedirectStandardError $tmpErr
-        if (-not $p.WaitForExit($global:TempoLimite * 1000)) {
-            try { $p.Kill() } catch { Write-Verbose "processo já encerrado: $_" }
-            Falhar "o script passou de $($global:TempoLimite)s (laço infinito? Read-Host esperando teclado?)"
-        }
-        $global:STATUS = $p.ExitCode
-        # -Raw lê o arquivo inteiro; TrimEnd remove a quebra de linha final.
-        $global:SAIDA = ((Get-Content -Raw -LiteralPath $tmpOut -ErrorAction SilentlyContinue) ?? '').TrimEnd("`r", "`n")
-        $global:ERRO  = ((Get-Content -Raw -LiteralPath $tmpErr -ErrorAction SilentlyContinue) ?? '').TrimEnd("`r", "`n")
+    # Usamos ProcessStartInfo.ArgumentList: ele CITA cada argumento corretamente,
+    # inclusive os que têm espaços (um Start-Process -ArgumentList não faz isso).
+    $psi = [System.Diagnostics.ProcessStartInfo]::new()
+    $psi.FileName = $pwshExe
+    foreach ($a in @('-NoProfile', '-NonInteractive', '-File', $global:ALVO)) { $psi.ArgumentList.Add([string]$a) }
+    if ($Args) { foreach ($a in $Args) { $psi.ArgumentList.Add([string]$a) } }
+    $psi.RedirectStandardOutput = $true
+    $psi.RedirectStandardError  = $true
+    $psi.UseShellExecute = $false
+
+    $p = [System.Diagnostics.Process]::Start($psi)
+    # ReadToEnd bloqueia até o processo fechar o stream — padrão para saída limitada.
+    $out = $p.StandardOutput.ReadToEnd()
+    $err = $p.StandardError.ReadToEnd()
+    if (-not $p.WaitForExit($global:TempoLimite * 1000)) {
+        try { $p.Kill() } catch { Write-Verbose "processo já encerrado: $_" }
+        Falhar "o script passou de $($global:TempoLimite)s (laço infinito? Read-Host esperando teclado?)"
     }
-    finally {
-        Remove-Item -LiteralPath $tmpOut, $tmpErr -Force -ErrorAction SilentlyContinue
-    }
+    $global:STATUS = $p.ExitCode
+    $global:SAIDA  = ($out ?? '').TrimEnd("`r", "`n")
+    $global:ERRO   = ($err ?? '').TrimEnd("`r", "`n")
 }
 
 # ----------------------------------------------------------------------------
