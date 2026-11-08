@@ -11,7 +11,7 @@ Este curso nasceu em **português do Brasil** e está sendo traduzido para alcan
 Cada arquivo de conteúdo tem a versão original (`README.md`, em português) e, ao lado, a versão traduzida com o sufixo do idioma: **`README.en.md`** (inglês), `README.es.md` (espanhol), etc. — seguindo os códigos [BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag).
 
 ```
-modulos/00-boas-vindas-e-fundamentos/
+modulos/00-introducao-paradigma/
 ├── README.md        ← original (pt-BR)
 ├── README.en.md     ← inglês
 └── README.es.md     ← espanhol (exemplo)
@@ -29,11 +29,14 @@ Regras simples:
 |---|:---:|:---:|:---:|
 | README (capa) | ✅ | ✅ | — |
 | CONTRIBUTING | ✅ | ✅ | — |
-| Módulos | ✅ | 🚧 ajude! | — |
-| Projetos | ✅ | 🚧 ajude! | — |
-| Referência | ✅ | 🚧 ajude! | — |
+| READMEs dos módulos (00–11) | ✅ | ✅ | — |
+| READMEs dos exercícios | ✅ | ✅ | — |
+| READMEs dos projetos | ✅ | ✅ | — |
+| Comentários dentro dos scripts | ✅ | 🚧 ajude! | — |
 
 ✅ pronto · 🚧 em aberto (pegue um e contribua!) · — ainda não começado
+
+> As páginas estão todas em inglês; o que ainda falta é traduzir os **comentários dentro dos scripts** (`.ps1`) — e, claro, **correções e melhorias** nas traduções existentes são sempre bem-vindas. Achou um deslize? Abra uma issue ou PR.
 
 ## Quer traduzir?
 
