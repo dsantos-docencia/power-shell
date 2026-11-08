@@ -1,5 +1,8 @@
 #!/usr/bin/env pwsh
 <#  Curso de PowerShell · Prof. Daniel Santos · github.com/dsantos-docencia/power-shell · © 2026 (PolyForm-NC)  #>
-# Solução 04.03 — -Begin inicia o acumulador, -Process soma, -End emite.
+# Solução 04.03 — ForEach-Object enxerga o escopo externo, então um
+# acumulador declarado antes do pipeline funciona.
 param([int]$N)
-1..$N | ForEach-Object -Begin { $soma = 0 } -Process { $soma += $_ } -End { Write-Output $soma }
+$soma = 0
+1..$N | ForEach-Object { $soma += $_ }
+Write-Output $soma

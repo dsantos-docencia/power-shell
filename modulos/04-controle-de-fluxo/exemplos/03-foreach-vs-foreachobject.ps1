@@ -22,14 +22,18 @@ $b = $numeros | ForEach-Object { $_ * $_ }
 "      quadrados: $($b -join ', ')" | Write-Output
 
 Write-Output ''
-Write-Output '2) ForEach-Object tem blocos -Begin / -Process / -End (útil em pipeline):'
-$numeros | ForEach-Object -Begin { $soma = 0 } -Process { $soma += $_ } -End { "      soma total: $soma" | Write-Output }
+Write-Output '2) Acumular num pipeline — ForEach-Object enxerga o escopo externo:'
+$soma = 0
+$numeros | ForEach-Object { $soma += $_ }
+"      soma total: $soma" | Write-Output
+Write-Output '   (ForEach-Object também tem -Begin/-Process/-End para inicializar e'
+Write-Output '    finalizar um acumulador explicitamente; veja Get-Help ForEach-Object.)'
 
 Write-Output ''
 Write-Output '3) Medindo a diferença com Measure-Command (dados JÁ na memória):'
 $grande = 1..50000
-$t1 = Measure-Command { $x = foreach ($n in $grande) { $n * 2 } }
-$t2 = Measure-Command { $y = $grande | ForEach-Object { $_ * 2 } }
+$t1 = Measure-Command { $null = foreach ($n in $grande) { $n * 2 } }
+$t2 = Measure-Command { $null = $grande | ForEach-Object { $_ * 2 } }
 "      instrução foreach : $([math]::Round($t1.TotalMilliseconds)) ms" | Write-Output
 "      ForEach-Object     : $([math]::Round($t2.TotalMilliseconds)) ms" | Write-Output
 Write-Output '   Para dados já na memória, a instrução foreach costuma vencer.'

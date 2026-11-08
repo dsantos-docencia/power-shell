@@ -37,7 +37,7 @@ $mapa  = @{ Nome = 'Ana'; Idade = 30 }
 Write-Output ''
 Write-Output '5) A tipagem forte PROTEGE: atribuir texto a um [int] falha de forma clara.'
 try {
-    [int]$numero = "abc"
+    $null = [int]"abc"
     "   (não deveria chegar aqui)" | Write-Output
 }
 catch {

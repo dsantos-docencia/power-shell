@@ -17,4 +17,4 @@ Buzz
 Recebe `$Arquivo` (um nome) e imprime a categoria via `switch -Wildcard`: `*.jpg`/`*.png` → `imagem`, `*.ps1` → `script`, `*.txt`/`*.md` → `texto`, qualquer outro → `outro`.
 
 ### 03 — Somar via pipeline · `03-somar-pipeline.ps1`
-Recebe `[int]$N` e imprime a soma de 1 a N usando `1..N | ForEach-Object` com os blocos `-Begin/-Process/-End` (não use a fórmula de Gauss). Ex.: `-N 10` → `55`.
+Recebe `[int]$N` e imprime a soma de 1 a N usando `1..N | ForEach-Object` com um acumulador (não use a fórmula de Gauss). Ex.: `-N 10` → `55`.
